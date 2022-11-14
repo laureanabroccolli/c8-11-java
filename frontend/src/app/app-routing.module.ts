@@ -1,21 +1,24 @@
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { NgModule } from '@angular/core';
+// Components Page
+import { LandingComponent } from './components/landing/landing.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { GastosComponent } from './components/gastos/gastos.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    //component: Template,
-    children: [
-      { path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule) },
-      { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) },
-      { path: '**', redirectTo: 'home' }
-    ]
-  },
+  {path:'landing', component:LandingComponent},
+  {path:'login', component:LoginComponent},
+  {path:'registro', component:RegistroComponent},
+  {path:'dashboard', component:DashboardComponent},
+  {path:'gastos', component:GastosComponent},
+  {path: '', redirectTo: '/landing', pathMatch: 'full'}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class PageRoutingModule { }
+export class AppRoutingModule { }
